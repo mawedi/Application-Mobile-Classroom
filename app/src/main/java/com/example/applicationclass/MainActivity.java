@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSubmit();
+                onSubmit(v);
             }
         });
     }
 
-    private void onSubmit() {
+    private void onSubmit(View view) {
         // Getting the data
         Integer age = seekBar.getProgress();
         Boolean fastPerson = yesResponse.isChecked();
