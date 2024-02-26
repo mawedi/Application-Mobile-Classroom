@@ -6,13 +6,167 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:background="@drawable/app_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Glycemic Calculator"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/dosis_light"
+                    android:textSize="44dp" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose your age:"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/dosis_light"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="30dp"/>
+
+                    <SeekBar
+                        android:id="@+id/scroll_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:min="0"
+                        android:minHeight="20dp"
+                        android:maxHeight="30dp"
+                        android:max="120"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:scrollbarStyle="outsideInset"
+                        android:scrollbarSize="@dimen/material_emphasis_disabled"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:id="@+id/scroll_bar_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/dosis_light"
+                            android:text="18"
+                            android:textSize="30dp" />
+
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="Are you Fast?"
+                        android:textStyle="bold
+"
+                        android:fontFamily="@font/dosis_light"
+                        android:textSize="30dp"/>
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="40dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/yes_response"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:textSize="30dp"
+                            android:fontFamily="@font/dosis_light"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"/>
+
+                        <RadioButton
+                            android:id="@+id/no_response"
+                            android:layout_marginLeft="60dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:fontFamily="@font/dosis_light"
+                            android:textSize="30dp"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="Enter your glycemic index:"
+                        android:fontFamily="@font/dosis_light"
+                        android:textSize="30dp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/glycemic_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:fontFamily="@font/dosis_light"
+                        android:textSize="30dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:inputType="numberDecimal"
+                        android:layout_marginTop="20dp"/>
+
+                    <Button
+                        android:id="@+id/submit_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginTop="10dp"
+                        android:text="SUBMIT"
+                        android:fontFamily="@font/dosis_light"
+                        android:textStyle="bold"
+                        android:textSize="38dp"/>
+
+                    <TextView
+                        android:id="@+id/tvReponse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:lineSpacingExtra="8sp"
+                        android:padding="40dp"
+                        android:text="..."
+                        android:fontFamily="@font/dosis_light"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
