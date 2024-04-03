@@ -1,17 +1,20 @@
-package com.example.applicationclass;
+package com.example.applicationclass.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.applicationclass.R;
+import com.example.applicationclass.controller.Controller;
+import com.example.applicationclass.model.Patient;
 
 public class MainActivity extends AppCompatActivity {
     SeekBar seekBar;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton noResponse;
     Button submitButton;
     EditText glycemicValue;
+    Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Getting the text to update it
-        seekBar = findViewById(R.id.scroll_bar);
-        seekBarText = findViewById(R.id.scroll_bar_value);
-        yesResponse = findViewById(R.id.yes_response);
-        noResponse = findViewById(R.id.no_response);
-        submitButton = findViewById(R.id.submit_button);
-        glycemicValue = findViewById(R.id.glycemic_value);
-        output = findViewById(R.id.tvReponse);
+        init();
 
-        seekBar.setProgress(18);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -76,40 +73,34 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        // Checking if the glycemic input is empty to print missing data to the user
         if (glycemicInput.equals("")) {
             output.setText("Missing data!");
             output.setTextColor(Color.RED);
 
+            // Printing a result to the user after analyzing the input.
         } else {
             Double glycemicValue = Double.valueOf(glycemicInput);
+            controller.createPatient(age, glycemicValue, fastPerson);
 
-            if (notFastPerson && (age < 13) && (age > 5) && (glycemicValue >= 5) && (glycemicValue <= 10)) {
-                output.setText("blood sugar is normal");
-                output.setTextColor(Color.BLACK);
-
-            } else if (notFastPerson && (age < 6) && (glycemicValue >= 5) && (glycemicValue <= 10)) {
-                output.setText("blood sugar is normal");
-                output.setTextColor(Color.BLACK);
-
-            } else if (notFastPerson && (age >= 13) && (glycemicValue <= 7.2) && (glycemicValue >= 5)) {
-                output.setText("blood sugar is normal");
-                output.setTextColor(Color.BLACK);
-
-            } else if (fastPerson && (glycemicValue < 10.5)) {
-                output.setText("blood sugar is normal");
-                output.setTextColor(Color.BLACK);
-
-            } else if (glycemicValue < 5){
-                output.setText("blood sugar level is too low");
-                output.setTextColor(Color.BLACK);
-
-            } else if (glycemicValue >= 10.5) {
-                output.setText("blood sugar level is too high");
-                output.setTextColor(Color.BLACK);
-
-            }
+            output.setText(controller.getResult());
         }
 
-
     }
+
+    public void init() {
+        controller = Controller.getInstance();
+
+        seekBar = findViewById(R.id.scroll_bar);
+        seekBarText = findViewById(R.id.scroll_bar_value);
+        yesResponse = findViewById(R.id.yes_response);
+        noResponse = findViewById(R.id.no_response);
+        submitButton = findViewById(R.id.submit_button);
+        glycemicValue = findViewById(R.id.glycemic_value);
+        output = findViewById(R.id.tvReponse);
+
+        // Initializing the progress bar on 18
+        seekBar.setProgress(18);
+    }
+
 }

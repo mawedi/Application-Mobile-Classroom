@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <LinearLayout
         android:background="@drawable/app_background"
@@ -20,9 +20,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/dosis_light"
                     android:text="Glycemic Calculator"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/dosis_light"
                     android:textSize="44dp" />
 
             </RelativeLayout>
@@ -154,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:lineSpacingExtra="8sp"
                         android:padding="40dp"
@@ -166,7 +167,6 @@
                 </LinearLayout>
 
             </ScrollView>
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
