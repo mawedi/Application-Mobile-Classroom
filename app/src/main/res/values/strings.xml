@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Class App</string>
     <string name="text" translatable="false">Mobile Development</string>
-
 </resources>
